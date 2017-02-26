@@ -21,9 +21,10 @@ ProgramOptions getProgramOptions(string[] args){
 	    args,
 	    "username|u",  					&programOptions.username,
 	    "destination|d",    			&programOptions.destination,
-	    "verbose|v", 					&programOptions.verbose,   // flag
-	    "source|s", "github|bitbucket", &programOptions.gitSource
+	    "verbose|v", 					&programOptions.verbose//,   // flag
+	    //"source|s", "github|bitbucket", &programOptions.gitSource //just github supported for now
     );
+    programOptions.gitSource = GitSourceProvider.github;
 
     return programOptions;
 }
@@ -34,7 +35,7 @@ int printUsage(string programName){
 }
 
 bool isProgramOptionsValid(ProgramOptions programOptions){
-	if(programOptions.username.empty){
+	if(programOptions.username.empty || programOptions.destination.empty){
 		return false;
 	}
 	return true;
