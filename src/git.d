@@ -1,13 +1,18 @@
 module gitbackdup.git;
 
+import std.stdio;
 import std.process;
 import std.file;
 import std.path;
+import std.parallelism;
 import gitbackdup.args;
 
 
 void backupRepos(ProgramOptions programOptions, string[] repoUrls){
-	foreach(string repoUrl; repoUrls){
+	foreach(string repoUrl; taskPool.parallel(repoUrls)){
+		if(programOptions.verbose){
+			writeln("Backing up ", dirNameForRepo(repoUrl));
+		}
 		if(isRepoAlreadyCloned(programOptions, repoUrl)){
 			gitPullUrl(programOptions, repoUrl);
 		}
