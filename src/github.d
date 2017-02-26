@@ -10,7 +10,7 @@ string repositoryUrlFor(string username){
 }
 
 
-void reposFor(string username){
+string[] reposFor(string username){
 	auto content = get(repositoryUrlFor(username));
 	JSONValue response = parseJSON(content);
 
@@ -18,9 +18,8 @@ void reposFor(string username){
 	string[] repoUrls;
 	
 	foreach(JSONValue repo; repos){
-		writeln(repo["git_url"].str);
 		repoUrls ~= repo["git_url"].str;
 	}
 
-	writeln(repoUrls.length);
+	return repoUrls;
 }

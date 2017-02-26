@@ -12,7 +12,7 @@ int main(string[] args){
 		return printUsage(args[0]);
 	}
 
-	reposFor(programOptions.username);
+	string[] githubRepoUrls = reposFor(programOptions.username);
 
 	return 0;
 }
