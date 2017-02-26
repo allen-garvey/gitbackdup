@@ -3,6 +3,7 @@ module gitbackdup.args;
 import std.getopt;
 import std.stdio;
 import std.string;
+import std.path;
 
 enum GitSourceProvider { github, bitbucket };
 
@@ -26,11 +27,15 @@ ProgramOptions getProgramOptions(string[] args){
     );
     programOptions.gitSource = GitSourceProvider.github;
 
+    if(!programOptions.destination.empty){
+    	programOptions.destination = absolutePath(programOptions.destination);
+    }
+
     return programOptions;
 }
 
 int printUsage(string programName){
-	writeln("usage: " ~ programName ~ " --username=github_username");
+	writeln("usage: " ~ programName ~ " --username=github_username --destination=directory");
 	return 1;
 }
 
