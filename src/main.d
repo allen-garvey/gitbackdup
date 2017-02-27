@@ -28,7 +28,7 @@ int main(string[] args){
 	string[] githubRepoUrls = reposFor(programOptions.username);
 
 	if(programOptions.verbose){
-		writeln("Backing up github repositories for ", programOptions.username, " in ", programOptions.destination);
+		writef("Backing up GitHub repositories for %s in %s\n", programOptions.username, programOptions.destination);
 	}
 	backupRepos(programOptions, githubRepoUrls);
 
