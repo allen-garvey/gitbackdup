@@ -4,6 +4,7 @@ import std.getopt;
 import std.stdio;
 import std.string;
 import std.path;
+import std.file;
 import gitbackdup.program_options;
 
 ProgramOptions getProgramOptions(string[] args){
@@ -36,3 +37,12 @@ bool isProgramOptionsValid(ProgramOptions programOptions){
 	}
 	return true;
 }
+
+bool isDestinationValid(ProgramOptions programOptions){
+	if(exists(programOptions.destination) && !isDir(programOptions.destination)){
+		return false;
+	}
+	return true;
+}
+
+

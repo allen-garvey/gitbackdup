@@ -13,6 +13,10 @@ int main(string[] args){
 	if(!isProgramOptionsValid(programOptions)){
 		return printUsage(args[0]);
 	}
+	if(!isDestinationValid(programOptions)){
+		stderr.writef("%s is not a directory\n", programOptions.destination);
+		return 1;
+	}
 
 	string[] githubRepoUrls = reposFor(programOptions.username);
 
