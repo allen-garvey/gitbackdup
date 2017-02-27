@@ -4,16 +4,7 @@ import std.getopt;
 import std.stdio;
 import std.string;
 import std.path;
-
-enum GitSourceProvider { github, bitbucket };
-
-struct ProgramOptions {
-	string destination;
-	string username;
-	bool verbose;
-	GitSourceProvider gitSource;
-};
-
+import gitbackdup.program_options;
 
 ProgramOptions getProgramOptions(string[] args){
 	ProgramOptions programOptions;

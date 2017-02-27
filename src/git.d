@@ -5,7 +5,7 @@ import std.process;
 import std.file;
 import std.path;
 import std.parallelism;
-import gitbackdup.args;
+import gitbackdup.program_options;
 
 
 void backupRepos(ProgramOptions programOptions, string[] repoUrls){

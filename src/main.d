@@ -1,6 +1,7 @@
 module gitbackdup.main;
 
 import std.stdio;
+import gitbackdup.program_options;
 import gitbackdup.args;
 import gitbackdup.github;
 import gitbackdup.git;
