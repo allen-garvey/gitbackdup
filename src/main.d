@@ -1,6 +1,7 @@
 module gitbackdup.main;
 
 import std.stdio;
+import std.file;
 import gitbackdup.program_options;
 import gitbackdup.args;
 import gitbackdup.github;
@@ -16,6 +17,12 @@ int main(string[] args){
 	if(!isDestinationValid(programOptions)){
 		stderr.writef("%s is not a directory\n", programOptions.destination);
 		return 1;
+	}
+	if(!exists(programOptions.destination)){
+		if(programOptions.verbose){
+			writef("Creating directory %s\n", programOptions.destination);
+		}
+		mkdirRecurse(programOptions.destination);
 	}
 
 	string[] githubRepoUrls = reposFor(programOptions.username);
