@@ -14,7 +14,8 @@ Back up your public GitHub repositories by cloning or pulling them to a local di
 
 * clone or download this repository
 * `cd` into project directory
-* Run `make`
+* Run `make release`
+* Run with `./bin/gitbackdup --username=github_username --destination=destination_directory`
 
 
 ## License
