@@ -2,9 +2,9 @@ module gitbackdup.main;
 
 import std.stdio;
 import std.file;
+import std.string;
 import gitbackdup.program_options;
 import gitbackdup.args;
-import gitbackdup.github;
 import gitbackdup.git;
 
 int main(string[] args){
@@ -25,12 +25,33 @@ int main(string[] args){
 		mkdirRecurse(programOptions.destination);
 	}
 
-	string[] githubRepoUrls = reposFor(programOptions.username);
+	string[] repoUrls;
+	
+	if(programOptions.gitSource == GitSourceProvider.github){
+		import gitbackdup.github;
 
-	if(programOptions.verbose){
-		writef("Backing up GitHub repositories for %s in %s\n", programOptions.username, programOptions.destination);
+		repoUrls = reposFor(programOptions.username);
+		if(programOptions.verbose){
+			writef("Backing up GitHub repositories for %s in %s\n", programOptions.username, programOptions.destination);
+		}
 	}
-	backupRepos(programOptions, githubRepoUrls);
+	//bitbucket
+	else{
+		import gitbackdup.bitbucket;
+
+		if(programOptions.appPassword.empty){
+			stderr.writef("app_password argument required for bitbucket\n");
+			return 1;
+		}
+
+		if(programOptions.verbose){
+			writef("Backing up Bitbucket repositories for %s in %s\n", programOptions.username, programOptions.destination);
+		}
+
+		repoUrls = reposFor(programOptions.username, programOptions.appPassword);
+	}
+
+	backupRepos(programOptions, repoUrls);
 
 	return 0;
 }

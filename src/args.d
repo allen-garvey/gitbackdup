@@ -14,10 +14,10 @@ ProgramOptions getProgramOptions(string[] args){
 	    args,
 	    "username|u",  					&programOptions.username,
 	    "destination|d",    			&programOptions.destination,
-	    "verbose|v", 					&programOptions.verbose//,   // flag
-	    //"source|s", "github|bitbucket", &programOptions.gitSource //just github supported for now
+	    "verbose|v", 					&programOptions.verbose,   // flag
+	    "app_password",					&programOptions.appPassword, //for bitbucket
+	    "source|s", "github|bitbucket", &programOptions.gitSource //just github supported for now
     );
-    programOptions.gitSource = GitSourceProvider.github;
 
     if(!programOptions.destination.empty){
     	programOptions.destination = absolutePath(programOptions.destination);

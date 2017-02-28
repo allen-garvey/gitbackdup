@@ -3,7 +3,6 @@ import std.uri;
 import std.net.curl;
 import std.json;
 import std.stdio;
-import std.conv;
 
 string repositoryUrlFor(string username){
 	return "https://api.github.com/users/" ~ encodeComponent(username) ~ "/repos?per_page=100";

@@ -8,4 +8,5 @@ struct ProgramOptions {
 	string username;
 	bool verbose;
 	GitSourceProvider gitSource;
+	string appPassword; //used for bitbucket authentication
 };
