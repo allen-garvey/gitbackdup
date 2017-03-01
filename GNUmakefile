@@ -1,4 +1,4 @@
-SRC = find ./src -type f -name '*.d'
+SRC = $(find ./src -type f -name '*.d')
 
 all: dev
 
