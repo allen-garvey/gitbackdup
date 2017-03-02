@@ -15,7 +15,16 @@ Back up your public GitHub repositories by cloning or pulling them to a local di
 * clone or download this repository
 * `cd` into project directory
 * Run `make release`
-* Run with `./bin/gitbackdup --username=github_username --destination=destination_directory`
+
+## Back up public GitHub repositories
+
+* Run `./bin/gitbackdup --source=github --username=github_username --destination=destination_directory`
+
+## Back up public and private Bitbucket repositories
+
+* Setup ssh key access to your Bitbucket account
+* Go into your account settings and generate an app secret
+* Run `./bin/gitbackdup --source=bitbucket --username=bitbucket_username --app_secret=your_app_secret --destination=destination_directory`
 
 
 ## License
