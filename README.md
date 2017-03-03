@@ -9,6 +9,7 @@ Back up your public GitHub repositories by cloning or pulling them to a local di
 * BSD or GNU Make
 * dmd v2.071.1 or higher
 * git
+* curl
 
 ## Getting Started
 
