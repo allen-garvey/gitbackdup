@@ -10,14 +10,19 @@ import gitbackdup.program_options;
 ProgramOptions getProgramOptions(string[] args){
 	ProgramOptions programOptions;
 
-	GetoptResult options = getopt(
-	    args,
-	    "username|u",  					&programOptions.username,
-	    "destination|d",    			&programOptions.destination,
-	    "verbose|v", 					&programOptions.verbose,   // flag
-	    "app_password",					&programOptions.appPassword, //for bitbucket
-	    "source|s", "github|bitbucket", &programOptions.gitSource //just github supported for now
-    );
+	try{
+		GetoptResult options = getopt(
+		    args,
+		    "username|u",  					&programOptions.username,
+		    "destination|d",    			&programOptions.destination,
+		    "verbose|v", 					&programOptions.verbose,   // flag
+		    "app_password",					&programOptions.appPassword, //for bitbucket
+		    "source|s", "github|bitbucket", &programOptions.gitSource //just github supported for now
+	    );
+	}
+	catch(Exception e){
+		return programOptions;
+	}
 
     if(!programOptions.destination.empty){
     	programOptions.destination = absolutePath(programOptions.destination);
