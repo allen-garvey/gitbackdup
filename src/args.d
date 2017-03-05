@@ -32,7 +32,7 @@ ProgramOptions getProgramOptions(string[] args){
 }
 
 int printUsage(string programName){
-	stderr.writef("usage: %s --username=github_username --destination=directory\n", programName);
+	stderr.writef("usage: %s --username=github_username --source=github|bitbucket --destination=directory\n", programName);
 	return 1;
 }
 
