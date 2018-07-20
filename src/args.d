@@ -25,7 +25,7 @@ ProgramOptions getProgramOptions(string[] args){
 	}
 
     if(!programOptions.destination.empty){
-    	programOptions.destination = absolutePath(programOptions.destination);
+    	programOptions.destination = absolutePath(expandTilde(programOptions.destination));
     }
 
     return programOptions;
